@@ -1,0 +1,19 @@
+use sakila;
+/*Ejercicio 6, act 1,5,6,7*/
+/*List all the actors that share the last name. Show them in order*/
+
+SELECT last_name from actor group by last_name having count(*)>1 order by last_name ;
+
+/*List the actors that acted in 'BETRAYED REAR' or in 'CATCH AMISTAD'*/
+SELECT first_name,last_name,film.title FROM actor 
+INNER JOIN film_actor on actor.actor_id = film_actor.actor_id 
+INNER JOIN film on film_actor.film_id = film.film_id
+where film.title like '%BETRAYED REAR%' or film.title like '%CATCH AMISTAD%';
+
+/*List the actors that acted in both 'BETRAYED REAR' and 'CATCH AMISTAD'*/
+
+SELECT first_name,film.title,film.film_id FROM actor 
+inner join film_actor on actor.actor_id = film_actor.actor_id 
+ JOIN film on film_actor.film_id = film.film_id
+where film.title in(select title from film where title like '%BETRAYED REAR%') and
+film.title in(select title from film where title like '%CATCH AMISTAD%');
