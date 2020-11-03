@@ -1,0 +1,56 @@
+#Ej 1: Install Redis with docker.
+$ docker run --name some-redis -d redis
+
+#Ej 3: Write examples with string.
+
+SET name Fred
+GET name
+
+#Ej 4: Write examples with bashes.
+
+HMSET song name "Shiawase" author "Dion Timmer" likes 1
+HGETALL song
+
+#Ej 5: Write examples with Lists.
+
+LPUSH games Minecraft
+LPUSH games TFT
+LPUSH games RocketLeague
+
+#Ej 6: Write examples with Sets
+
+SADD genres Fiction
+SADD genres Sci-Fi
+SADD genres Romance
+SADD genres Drama
+
+#Ej 7: Write examples with Sorted Sets
+
+ZADD brands 1 Xiaomi
+ZADD brands 2 Samsung
+ZADD brands 3 Apple
+ZADD brands 4 Motorola
+
+ZRANGE brands 0 5 WITHSCORES
+
+#Ej 8: Write examples using Publish Subscribe
+
+SUBSCRIBE source1
+PUBLISH source1 "Source Data"
+
+#Ej 9: Write examples using Transactions
+
+MULTI
+SET content stuff
+GET content
+EXEC
+
+#Ej 10: Investigate backups
+
+Sirven para guardar la base de datos, son eso, backups...
+
+#Ej 11: Investigate Benchmarks - Run some
+
+redis-benchmark -n 150000
+
+Sirve para tener info sobre el performance
